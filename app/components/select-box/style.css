@@ -1,0 +1,25 @@
+.box {
+  width: 5%;
+  display: block;
+  border: 10px solid;
+  float: left;
+  margin-right: 1%;
+  min-height: 50px;
+  margin-bottom:20px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* lol random */
+.box.selected {
+  background-color: orange;
+}
+
+.box.on {
+  background-color: #000;
+}
+.box.on.selected {
+  border-color: orange;
+}

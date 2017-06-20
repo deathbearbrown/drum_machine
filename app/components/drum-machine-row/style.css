@@ -1,0 +1,38 @@
+.row {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  zoom: 1;
+}
+
+.typeLabel {
+  width:20%;
+  float: left;
+}
+.interactive-row {
+  width: 80%;
+  float: left;
+}
+
+.box {
+  width: 5%;
+  display: block;
+  border: 10px solid;
+  float: left;
+  margin-right: 1%;
+  min-height: 50px;
+  margin-bottom:20px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* lol random */
+.box.selected {
+  background-color: orange;
+}
+
+.box.highlighted {
+  background-color: orange;
+}

@@ -1,0 +1,13 @@
+.main {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row h2 {
+  width: 10%;
+  float: left;
+  margin-right: 5%;
+  display:block;
+}
+
