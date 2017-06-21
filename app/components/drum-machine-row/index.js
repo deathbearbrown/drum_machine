@@ -7,18 +7,18 @@ function typeName (type) {
 }
 
 export default function(props) {
-  const sequence = props.sequence;
+  let {sequence, type, handleToggle} = props;
 
   return (
     <div className="row">
-      <h2 className="typeLabel">{typeName(props.type)}</h2>
+      <h2 className="typeLabel">{typeName(type)}</h2>
       <div className="interactive-row">
         { sequence.map( (beat, i) => (
           <SelectBox
-            key={'selected_'+props.type+'_'+i}
+            key={'selected_'+type+'_'+i}
             index={i}
-            beat_type={props.type}
-            handleToggle={props.handleToggle}
+            beat_type={type}
+            handleToggle={handleToggle}
             selected={beat}/>
         ))}
       </div>

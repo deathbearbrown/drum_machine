@@ -1,3 +1,46 @@
-input[type='text']:disabled {
+input[type='number']:disabled {
   background-color: grey;
+}
+
+input[type='number'] {
+  border-radius: 5px;
+  border: 1px solid #000;
+}
+
+input[type='number'],
+button,
+label,
+select {
+  font-size: 1em;
+  padding: 5px;
+}
+
+button {
+  text-transform: uppercase;
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #000;
+  margin-right: 10px;
+  cursor: pointer;
+}
+button.stop.on,
+button.stop:hover,
+button.stop:focus {
+  background-color: red;
+  color: #fff;
+}
+
+button.start.on,
+button.start:hover,
+button.start:focus {
+  background-color: green;
+  color: #fff;
+}
+
+label {
+  text-transform: uppercase;
+}
+
+.controls {
+  margin-bottom: 30px;
 }

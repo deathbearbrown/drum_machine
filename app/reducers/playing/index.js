@@ -8,7 +8,8 @@ export default function playingReducer(state = {}, action) {
       });
     case 'TICK':
       if (state.interval !== null) {
-        let newBeat_index  = (state.beat_index + 1) % 16;
+        const sequenceLength = 16; // all my sequences are 16 beats
+        const newBeat_index  = (state.beat_index + 1) % sequenceLength;
         return Object.assign({}, state, { beat_index: newBeat_index });
       } else {
         return Object.assign({}, state, { beat_index: 0 });

@@ -1,12 +1,14 @@
 // Possibly bad logic. I don't want the parent to draw...
 import React from 'react';
-import './style.css';
 import {connect} from 'react-redux';
+import {isPlaying, getBeatIndex} from '../../reducers/index';
+
+import './style.css';
 
 function mapStateToProps(reduxState, ownProps) {
   return {
-    beat_index: reduxState.playing.beat_index, //TODO clean this up to match convention of redux getters
-    isPlaying: reduxState.playing.on
+    beat_index: getBeatIndex(reduxState),
+    isPlaying: isPlaying(reduxState)
   };
 }
 

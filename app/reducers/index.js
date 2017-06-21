@@ -13,23 +13,22 @@ const rootReducer = combineReducers({
 });
 
 /**
- * fetching helpers
+ * Fetching helpers
+ * If I ever decide to change the structure of the
+ * store object, I only need to update the fetching functions here instead of
+ * the components.  It's very helpful.
+ * On a huge project I would put these in their corresponding reducer folder and
+ * import them in this file.
  */
 
-/**
- * get isPlaying status
- * @param  {Boolean}  state - state.playing
- * @return {Boolean}  status
- */
 export function isPlaying(state){
   return state.playing.on;
 }
 
-/**
- * get current sequence
- * @param  {String} state - state.current_sequence
- * @return {String} sequence name
- */
+export function getBeatIndex(state){
+  return state.playing.beat_index;
+}
+
 export function activeSequence(state){
   return state.active_sequence;
 }

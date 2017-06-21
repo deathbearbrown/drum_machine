@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {isPlaying, getBPM, activeSequence, getAllSequenceNames} from '../../reducers/index';
-import {updatePlaying} from '../../actions/playingAction';
+import {startPlaying, stopPlaying} from '../../actions/playingAction';
 import {updateActiveSequence} from '../../actions/activeSequenceAction';
 import {updateBPM} from '../../actions/bpmAction';
 
@@ -19,10 +19,10 @@ function mapStateToProps(reduxState, ownProps) {
 function mapDispatchToProps(dispatch, ownProps) {
   return {
     startPlaying: function(){
-      return dispatch({ type: 'START_PLAYING', currentTime: Date.now() });
+      return dispatch(startPlaying());
     },
     stopPlaying: function(){
-      return dispatch({ type: 'STOP_PLAYING' });
+      return dispatch(stopPlaying());
     },
     setSequence: function(sequenceId) {
       return dispatch(updateActiveSequence(sequenceId));
@@ -44,31 +44,35 @@ class Controls extends React.Component {
   }
 
   handleTempoChange(event) {
-    // this should have validation but I don't have time
-    // TODO PUT SOME VISUAL CUES FOR VALIDATION IN THE TEMPLATE
-    if (/^[1-9][\d]*$/.test(event.target.value)){
-      this.props.setBPM(event.target.value);
-    }
+    this.props.setBPM(event.target.value);
   }
 
   render() {
+    let {
+      playing,
+      bpm,
+      sequenceNames
+    } = this.props;
+
     return (
-      <div>
-        <button onClick={this.setPlayStatus.bind(this, 'start')}>Start</button>
-        <button onClick={this.setPlayStatus.bind(this, 'stop')}>Stop</button>
+      <div className='controls'>
+        <button className={playing ? 'start on' : 'start' } onClick={this.setPlayStatus.bind(this, 'start')}>Start</button>
+        <button className={playing ? 'stop' : 'stop on' } onClick={this.setPlayStatus.bind(this, 'stop')}>Stop</button>
         <span>
           <input
-            type="text"
+            type="number"
+            min="1"
+            max="2000" // rando max
             id="beatsPerMin"
-            disabled={!!this.props.playing}
-            value={this.props.bpm}
+            disabled={!!playing}
+            value={bpm}
             name="tempo"
             onChange={this.handleTempoChange.bind(this)} />
           <label htmlFor="beatsPerMin">BPM</label>
         </span>
         <label htmlFor="sequence"> Select a sequence:</label>
         <select name="sequence" id="sequence" onChange={this.handleSelectChange.bind(this)}>
-          {this.props.sequenceNames.map(sequence =>(
+          {sequenceNames.map(sequence =>(
             <option key={'sequence_'+sequence} value={sequence}>{sequence}</option>
           ))}
         </select>

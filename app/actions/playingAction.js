@@ -1,6 +1,7 @@
-export function updatePlaying(playing) {
-  return {
-    type: 'UPDATE_PLAYING',
-    playing
-  };
+export function startPlaying() {
+  return { type: 'START_PLAYING'};
+}
+
+export function stopPlaying() {
+  return { type: 'STOP_PLAYING'};
 }

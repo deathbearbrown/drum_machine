@@ -1,12 +1,20 @@
-import { updatePlaying } from './playingAction.js';
+import { startPlaying, stopPlaying } from './playingAction.js';
 
-var updatePlayingAction = updatePlaying(false);
+describe('Playing Actions', ()=> {
+  it('startPlaying creates an action object', () => {
+    const startPlayingAction = startPlaying();
 
-const expectedAction = {
-    type: 'UPDATE_PLAYING',
-    playing: false
-  };
+    let expectedAction = {
+      type: 'START_PLAYING'
+    };
+    expect(startPlayingAction).toMatchObject(expectedAction);
+  });
+  it('stopPlaying creates an action object', () => {
+    const stopPlayingAction = stopPlaying();
 
-test('Playing actions: updatePlaying creates an action object', () => {
-  expect(updatePlayingAction).toMatchObject(expectedAction);
+    let expectedAction = {
+      type: 'STOP_PLAYING'
+    };
+    expect(stopPlayingAction).toMatchObject(expectedAction);
+  });
 });
