@@ -15,3 +15,7 @@ Your drum machine should include the following features:
 - A song plays at a given tempo (AKA bpm), the tempo does not need to be able change while the song plays.
 - The time signature is expected to be 4/4 (if you don't know what that is, don't worry and ignore this instruction). NOTE: I don't know what that is. I am bad at music.
 - The pattern is expected to be 8 steps or more.
+
+## Local Dev
+- run `npm install`
+- run `npm start`
